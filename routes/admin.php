@@ -25,3 +25,8 @@ Route::prefix('adminpanel')->group(function () {
     });
 
 });
+
+
+// Route::group(['prefix' => 'admin'], function() {
+
+// });
