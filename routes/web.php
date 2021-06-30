@@ -1,15 +1,21 @@
 <?php
 
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('show', [PagesController::class, 'show']);
 
-Route::get('/home', [PageController::class, 'home']);
-Route::get('/about', [PageController::class, 'about']);
-Route::get('/contact', [PageController::class, 'contact']);
-Route::get('/services', [PageController::class, 'services']);
-Route::get('/team', [PageController::class, 'team']);
+Route::get('dashboard/{type}', [PagesController::class, 'check'])->middleware('checkadmin');
 
+Route::get('/main', [PagesController::class, 'home'])->name('homepageurl');
+Route::get('/about-us', [PagesController::class, 'about'])->name('aboutpageurl');
+Route::get('/contact-us', [PagesController::class, 'contact'])->name('contactpageurl');
+Route::get('/our-services', [PagesController::class, 'services'])->name('servicespageurl');
+Route::get('/our-team', [PagesController::class, 'team'])->name('teampageurl');
+// Route::get('/about', );
+// Route::get('/contact', );
+// Route::get('/services', );
+// Route::get('/team', );
 
 Route::get('/', function() {
     // return 'Homepage';
