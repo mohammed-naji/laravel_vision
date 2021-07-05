@@ -1,7 +1,38 @@
 <?php
 
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\Site2Controller;
 use Illuminate\Support\Facades\Route;
+
+Route::prefix('site2')->group(function() {
+    Route::get('/', [Site2Controller::class, 'index'])->name('site2_home');
+    Route::get('/about', [Site2Controller::class, 'about'])->name('site2_about');
+    Route::get('/team', [Site2Controller::class, 'team'])->name('site2_team');
+    Route::get('/contact', [Site2Controller::class, 'contact'])->name('site2_contact');
+    Route::get('/faq', [Site2Controller::class, 'faq'])->name('site2_faq');
+    Route::get('/services', [Site2Controller::class, 'services'])->name('site2_services');
+});
+
+
+
+
+
+
+
+
+
+
+// Route::get('protfolio', );
+// Route::get('protfolio/about', );
+// Route::get('protfolio/contact', );
+
+Route::prefix('protfolio')->group(function() {
+    Route::get('/', [PortfolioController::class, 'index'])->name('porthome');
+    Route::get('/about', [PortfolioController::class, 'about'])->name('portabout');
+    Route::get('/contact', [PortfolioController::class, 'contact'])->name('portcontact');
+});
+
 
 Route::get('show', [PagesController::class, 'show']);
 
