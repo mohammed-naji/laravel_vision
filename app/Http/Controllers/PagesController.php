@@ -52,4 +52,8 @@ class PagesController extends Controller
         // return 'team';
         return view('team');
     }
+
+    public function album() {
+        return view('album.index');
+    }
 }

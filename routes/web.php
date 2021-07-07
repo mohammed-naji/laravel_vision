@@ -5,6 +5,10 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\Site2Controller;
 use Illuminate\Support\Facades\Route;
 
+
+Route::get('/album', [PagesController::class, 'album']);
+
+
 Route::prefix('site2')->group(function() {
     Route::get('/', [Site2Controller::class, 'index'])->name('site2_home');
     Route::get('/about', [Site2Controller::class, 'about'])->name('site2_about');
@@ -27,7 +31,7 @@ Route::prefix('site2')->group(function() {
 // Route::get('protfolio/about', );
 // Route::get('protfolio/contact', );
 
-Route::prefix('protfolio')->group(function() {
+Route::prefix('portfolio')->group(function() {
     Route::get('/', [PortfolioController::class, 'index'])->name('porthome');
     Route::get('/about', [PortfolioController::class, 'about'])->name('portabout');
     Route::get('/contact', [PortfolioController::class, 'contact'])->name('portcontact');
