@@ -1,10 +1,17 @@
 <?php
 
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\PortfolioController;
-use App\Http\Controllers\Site2Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\Site2Controller;
+use App\Http\Controllers\CreativeController;
+use App\Http\Controllers\PortfolioController;
 
+Route::get('form', [FormController::class, 'form']);
+Route::post('form', [FormController::class, 'formSubmit'])->name('formSubmit');
+
+
+Route::get('creative', [CreativeController::class, 'index']);
 
 Route::get('/album', [PagesController::class, 'album']);
 
