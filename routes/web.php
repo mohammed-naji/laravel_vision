@@ -1,14 +1,25 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FormController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Site2Controller;
 use App\Http\Controllers\CreativeController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\PortfolioController;
 
-Route::get('form', [FormController::class, 'form']);
+Route::get('form', [FormController::class, 'index']);
 Route::post('form', [FormController::class, 'formSubmit'])->name('formSubmit');
+
+
+Route::get('form2', [FormController::class, 'form2']);
+Route::post('form2', [FormController::class, 'form2Submit'])->name('form2Submit');
+
+Route::get('form3', [FormController::class, 'form3']);
+Route::post('form3', [FormController::class, 'form3Submit'])->name('form3Submit');
+
+Route::get('form4', [FormController::class, 'form4']);
+Route::post('form4', [FormController::class, 'form4Submit'])->name('form4Submit');
+
 
 
 Route::get('creative', [CreativeController::class, 'index']);
