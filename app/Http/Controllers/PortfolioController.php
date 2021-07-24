@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactUsMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PortfolioController extends Controller
 {
@@ -29,6 +31,12 @@ class PortfolioController extends Controller
     }
 
     public function contact() {
+        return view('portfolio.contact');
+    }
+
+    public function contactSubmit(Request $request) {
+        $data = $request->except('_token');
+        Mail::to('admin@example.com')->send(new ContactUsMail($data));
         return view('portfolio.contact');
     }
 

@@ -15,12 +15,23 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+
+        @if (App::isLocale('ar'))
+        <style>
+            body {
+                direction: rtl;
+                text-align: right;
+            }
+        </style>
+        @endif
+
+
     </head>
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('porthome') }}">Start Bootstrap</a>
+                <a class="navbar-brand" href="{{ route('porthome') }}">{{ __('general.site_name') }}</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -36,6 +47,20 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded
 {{ request()->routeIs('portcontact') ? 'active' : '' }}
                             " href="{{ route('portcontact') }}">Contact</a></li>
+
+                            <ul>
+                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                        @if (App::currentLocale() != $localeCode)
+                                        <li>
+                                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                {{ $properties['native'] }}
+                                            </a>
+                                        </li>
+                                        @endif
+
+                                @endforeach
+                            </ul>
+
                     </ul>
                 </div>
             </div>
