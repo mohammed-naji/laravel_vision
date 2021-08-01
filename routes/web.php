@@ -8,8 +8,15 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Site2Controller;
 use App\Http\Controllers\CreativeController;
+use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\PortfolioController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
+
+Route::get('db', [DatabaseController::class, 'index']);
+Route::post('db', [DatabaseController::class, 'save'])->name('save');
+
+
 
 
 Route::prefix('agency')->name('agency.')->group(function() {
