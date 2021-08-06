@@ -28,7 +28,8 @@ class DatabaseController extends Controller
         // dd($users);
 
 
-        $posts = Post::select('title')->get();
+        $posts = Post::all();
+        dd($posts);
         //$posts = DB::table('posts')->get();
         foreach($posts as $post) {
             dump($post);

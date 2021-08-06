@@ -10,7 +10,16 @@ use App\Http\Controllers\Site2Controller;
 use App\Http\Controllers\CreativeController;
 use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\PostController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
+
+// CRUD Application for posts
+Route::get('posts', [PostController::class, 'index']);
+
+Route::get('posts/delete/{id}', [PostController::class, 'delete'])->name('delete');
+
+Route::get('posts/create', [PostController::class, 'create'])->name('create');
 
 
 Route::get('db', [DatabaseController::class, 'index']);

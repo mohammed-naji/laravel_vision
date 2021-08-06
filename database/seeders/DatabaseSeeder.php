@@ -16,12 +16,14 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        foreach( range(1, 100) as $i) {
-            DB::table('posts')->insert([
-                'title' => 'First Post',
-                'content' => 'This is content'
-            ]);
-        }
+        $this->call(PostSeeder::class);
+
+        // foreach( range(1, 100) as $i) {
+        //     DB::table('posts')->insert([
+        //         'title' => 'First Post',
+        //         'content' => 'This is content'
+        //     ]);
+        // }
 
     }
 }
