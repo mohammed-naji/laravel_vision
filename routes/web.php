@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\CategoryController;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -15,11 +16,18 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 // CRUD Application for posts
+// show all posts
 Route::get('posts', [PostController::class, 'index']);
-
+// delete post
 Route::get('posts/delete/{id}', [PostController::class, 'delete'])->name('delete');
-
+// add new post
 Route::get('posts/create', [PostController::class, 'create'])->name('create');
+Route::post('posts/create', [PostController::class, 'store'])->name('posts.create');
+// update post
+Route::get('posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
+Route::put('posts/{id}/edit', [PostController::class, 'update'])->name('posts.update');
+
+Route::resource('categories', CategoryController::class);
 
 
 Route::get('db', [DatabaseController::class, 'index']);

@@ -11,18 +11,19 @@
 <body>
 
     <div class="container my-5">
-        <h2>Add New Post</h2>
+        <h2>Update Post</h2>
         @include('posts.errors')
-        <form action="{{ route('posts.create') }}" method="POST">
+        <form action="{{ route('posts.update', $post->id) }}" method="POST">
             @csrf
+            @method('put')
             <div class="mb-4">
-                <input type="text" class="form-control" name="title" placeholder="Title" />
+                <input type="text" class="form-control" name="title" placeholder="Title" value="{{ $post->title }}" />
             </div>
 
             <div class="mb-4">
-                <textarea class="form-control" name="body" placeholder="Body" rows="5"></textarea>
+                <textarea class="form-control" name="body" placeholder="Body" rows="5">{{ $post->body }}</textarea>
             </div>
-            <button class="btn btn-success px-5 btn-lg">Add</button>
+            <button class="btn btn-info px-5 btn-lg">Update</button>
         </form>
     </div>
 

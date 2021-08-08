@@ -11,16 +11,12 @@
 <body>
 
     <div class="container my-5">
-        <h2>Add New Post</h2>
-        @include('posts.errors')
-        <form action="{{ route('posts.create') }}" method="POST">
+        <h2>Add New Category</h2>
+        @include('categories.errors')
+        <form action="{{ route('categories.store') }}" method="POST">
             @csrf
             <div class="mb-4">
-                <input type="text" class="form-control" name="title" placeholder="Title" />
-            </div>
-
-            <div class="mb-4">
-                <textarea class="form-control" name="body" placeholder="Body" rows="5"></textarea>
+                <input type="text" class="form-control" name="name" placeholder="Name" />
             </div>
             <button class="btn btn-success px-5 btn-lg">Add</button>
         </form>
